@@ -1,0 +1,201 @@
+[
+  {
+    "id": "p-1",
+    "name": "iPhone 15 Pro Max",
+    "brand": "Apple",
+    "images": [
+      "https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1696446702381-1271101ab65b?auto=format&fit=crop&q=80&w=800"
+    ],
+    "basePrice": 159900,
+    "variants": [
+      {
+        "id": "v-1-1",
+        "color": "Natural Titanium",
+        "storage": "256GB",
+        "priceModifier": 0
+      },
+      {
+        "id": "v-1-2",
+        "color": "Black Titanium",
+        "storage": "256GB",
+        "priceModifier": 0
+      },
+      {
+        "id": "v-1-3",
+        "color": "Natural Titanium",
+        "storage": "512GB",
+        "priceModifier": 20000
+      }
+    ],
+    "description": "Forged in titanium and featuring the groundbreaking A17 Pro chip, a customizable Action button, and the most powerful iPhone camera system ever.",
+    "specs": {
+      "Display": "6.7-inch Super Retina XDR display with ProMotion",
+      "Processor": "A17 Pro chip",
+      "Camera": "Pro camera system (48MP Main, 12MP Ultra Wide, and 12MP Telephoto)",
+      "Battery": "Up to 29 hours video playback"
+    },
+    "emiOptions": [
+      {
+        "id": "emi-1-1",
+        "provider": "1Fi Mutual Fund Backed",
+        "tenureMonths": 12,
+        "monthlyEMI": 13325,
+        "interestRate": 0,
+        "processingFee": 1999,
+        "totalAmount": 159900
+      },
+      {
+        "id": "emi-1-2",
+        "provider": "1Fi Mutual Fund Backed",
+        "tenureMonths": 24,
+        "monthlyEMI": 7195,
+        "interestRate": 8,
+        "processingFee": 1999,
+        "totalAmount": 172680
+      }
+    ],
+    "isNew": true
+  },
+  {
+    "id": "p-2",
+    "name": "Samsung Galaxy S24 Ultra",
+    "brand": "Samsung",
+    "images": [
+      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&q=80&w=800"
+    ],
+    "basePrice": 129999,
+    "variants": [
+      {
+        "id": "v-2-1",
+        "color": "Titanium Gray",
+        "storage": "256GB",
+        "priceModifier": 0
+      },
+      {
+        "id": "v-2-2",
+        "color": "Titanium Black",
+        "storage": "512GB",
+        "priceModifier": 10000
+      }
+    ],
+    "description": "Welcome to the era of mobile AI. With Galaxy S24 Ultra in your hands, you can unleash whole new levels of creativity, productivity and possibility.",
+    "specs": {
+      "Display": "6.8-inch Dynamic AMOLED 2X",
+      "Processor": "Snapdragon 8 Gen 3 for Galaxy",
+      "Camera": "200MP Wide-angle & 2x Optical Quality Zoom",
+      "Battery": "5000mAh"
+    },
+    "emiOptions": [
+      {
+        "id": "emi-2-1",
+        "provider": "1Fi Mutual Fund Backed",
+        "tenureMonths": 6,
+        "monthlyEMI": 21666,
+        "interestRate": 0,
+        "processingFee": 999,
+        "totalAmount": 129999
+      },
+      {
+        "id": "emi-2-2",
+        "provider": "1Fi Mutual Fund Backed",
+        "tenureMonths": 18,
+        "monthlyEMI": 7944,
+        "interestRate": 10,
+        "processingFee": 1499,
+        "totalAmount": 142999
+      }
+    ]
+  },
+  {
+    "id": "p-3",
+    "name": "Sony WH-1000XM5",
+    "brand": "Sony",
+    "images": [
+      "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&q=80&w=800"
+    ],
+    "basePrice": 29990,
+    "variants": [
+      {
+        "id": "v-3-1",
+        "color": "Black",
+        "storage": "N/A",
+        "priceModifier": 0
+      },
+      {
+        "id": "v-3-2",
+        "color": "Silver",
+        "storage": "N/A",
+        "priceModifier": 0
+      }
+    ],
+    "description": "Industry-leading noise cancellation. Two processors control 8 microphones for unprecedented noise cancellation.",
+    "specs": {
+      "Type": "Over-Ear",
+      "Noise Cancellation": "Yes, Active",
+      "Battery Life": "Up to 30 hours",
+      "Connectivity": "Bluetooth 5.2"
+    },
+    "emiOptions": [
+      {
+        "id": "emi-3-1",
+        "provider": "1Fi Mutual Fund Backed",
+        "tenureMonths": 3,
+        "monthlyEMI": 9996,
+        "interestRate": 0,
+        "processingFee": 499,
+        "totalAmount": 29990
+      }
+    ]
+  },
+  {
+    "id": "p-4",
+    "name": "MacBook Air M3",
+    "brand": "Apple",
+    "images": [
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=800"
+    ],
+    "basePrice": 114900,
+    "variants": [
+      {
+        "id": "v-4-1",
+        "color": "Midnight",
+        "storage": "256GB SSD, 8GB RAM",
+        "priceModifier": 0
+      },
+      {
+        "id": "v-4-2",
+        "color": "Starlight",
+        "storage": "512GB SSD, 16GB RAM",
+        "priceModifier": 40000
+      }
+    ],
+    "description": "Supercharged by M3. The M3 chip brings even greater capabilities to the superportable 13-inch MacBook Air.",
+    "specs": {
+      "Display": "13.6-inch Liquid Retina display",
+      "Processor": "Apple M3 chip",
+      "Memory": "Up to 24GB unified memory",
+      "Storage": "Up to 2TB SSD"
+    },
+    "emiOptions": [
+      {
+        "id": "emi-4-1",
+        "provider": "1Fi Mutual Fund Backed",
+        "tenureMonths": 12,
+        "monthlyEMI": 9575,
+        "interestRate": 0,
+        "processingFee": 1999,
+        "totalAmount": 114900
+      },
+      {
+        "id": "emi-4-2",
+        "provider": "1Fi Mutual Fund Backed",
+        "tenureMonths": 24,
+        "monthlyEMI": 5170,
+        "interestRate": 8,
+        "processingFee": 1999,
+        "totalAmount": 124080
+      }
+    ]
+  }
+]
