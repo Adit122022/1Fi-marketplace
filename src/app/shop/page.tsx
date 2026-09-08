@@ -1,43 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Image from "next/image";
 import { ProductList } from "@/components/shop/ProductList";
 import { cn } from "@/lib/utils";
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 
 type Tab = "brands" | "stores" | "marketplace";
 
 export default function ShopPage() {
   const [activeTab, setActiveTab] = useState<Tab>("marketplace");
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <div className="w-full max-w-2xl mx-auto pb-8">
-      {/* Top Purple Banner */}
-      <div className="bg-gradient-to-b from-[#250d5f] to-[#4c1d95] text-white pt-12 pb-24 relative overflow-hidden h-[340px]">
-        <div className="relative z-10 px-6 h-full flex flex-col justify-center pb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/30 bg-transparent text-xs font-semibold tracking-wide mb-6 w-fit">
-            <span className="text-sm">✨</span> NO-COST EMIs
-          </div>
-          <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight mb-2">
-            Shop today,<br/>
-            <span className="italic font-normal">Pay later using</span><br/>
-            Mutual funds.
-          </h1>
-          <p className="text-[13px] text-white/90 max-w-[220px] mt-4 leading-snug font-light">
-            No credit score required. No interest.<br/>Backed by your investments.
-          </p>
-        </div>
-        {/* The generated hero collage */}
-        <div className="absolute top-0 right-0 w-[65%] h-full z-0 translate-x-[10%] translate-y-[-5%]">
-          <Image 
-            src="/hero_collage.jpg" 
-            alt="Products Collage" 
-            fill 
-            className="object-contain object-right mix-blend-lighten opacity-95 scale-[1.1]"
-            priority
-          />
-        </div>
+      {/* Banner — full image, no overlay needed */}
+      <div className="relative w-full overflow-hidden h-[214px]">
+        <Image
+          src="/hero_collage.png"
+          alt="Shop today, Pay later using Mutual funds"
+          fill
+          className="object-contain object-center"
+          priority
+        />
       </div>
 
       {/* Tabs Container (Overlapping banner) */}
@@ -96,18 +81,28 @@ export default function ShopPage() {
           </div>
           <input
             type="text"
-            className="w-full bg-white border-none rounded-full py-4 pl-12 pr-4 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4c1d95]/20 placeholder-gray-400"
-            placeholder="Search online stores..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full bg-white border-none rounded-full py-2 pl-12 pr-10 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4c1d95]/20 placeholder-gray-400"
+            placeholder="Search products..."
           />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery("")}
+              className="absolute inset-y-0 right-4 flex items-center text-gray-400 hover:text-gray-600"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          )}
         </div>
       </div>
 
       {/* Content Area */}
-      <div className="px-4 mt-8">
+      <div className="px-4 mt-2 ">
         {activeTab === "brands" && (
-          <div className="space-y-4">
+          <div className="space-y-4 p-3">
             <h2 className="text-lg font-bold text-gray-900 mb-4">Top Brands</h2>
-            
+
             {/* Mock Top Brands from screenshot */}
             <div className="bg-white rounded-2xl p-4 flex items-center gap-4 shadow-sm border border-gray-100">
               <div className="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center shrink-0">
@@ -141,7 +136,7 @@ export default function ShopPage() {
         {activeTab === "marketplace" && (
           <div className="animate-in fade-in duration-500">
             <h2 className="text-lg font-bold text-gray-900 mb-4">1Fi Marketplace</h2>
-            <ProductList />
+            <ProductList searchQuery={searchQuery} />
           </div>
         )}
       </div>

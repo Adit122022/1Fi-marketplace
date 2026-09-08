@@ -1,31 +1,60 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getProducts } from "@/services/api";
+import { getProducts, searchProducts } from "@/services/api";
 import { Product } from "@/types";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
 import { Skeleton } from "@/components/ui/Skeleton";
 
-export function ProductList() {
+interface ProductListProps {
+  searchQuery?: string;
+}
+
+export function ProductList({ searchQuery = "" }: ProductListProps) {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    async function loadProducts() {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+
+    debounceRef.current = setTimeout(async () => {
+      setLoading(true);
+      setError(null);
       try {
-        const data = await getProducts();
+        const data = searchQuery.trim()
+          ? await searchProducts(searchQuery.trim())
+          : await getProducts();
         setProducts(data);
-      } catch (error) {
-        console.error("Failed to load products:", error);
+      } catch (err) {
+        console.error("Failed to load products:", err);
+        setError("Unable to load products. Please try again later.");
       } finally {
         setLoading(false);
       }
-    }
-    loadProducts();
-  }, []);
+    }, searchQuery ? 400 : 0);
+
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
+  }, [searchQuery]);
+
+  if (error) {
+    return (
+      <div className="py-16 text-center">
+        <p className="text-gray-500 text-sm mb-3">{error}</p>
+        <button
+          onClick={() => { setError(null); setLoading(true); }}
+          className="text-[#4c1d95] font-semibold text-sm underline underline-offset-2"
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
 
   if (loading) {
     return (
@@ -40,6 +69,18 @@ export function ProductList() {
             </div>
           </div>
         ))}
+      </div>
+    );
+  }
+
+  if (!loading && products.length === 0) {
+    return (
+      <div className="py-16 text-center">
+        <p className="text-2xl mb-2">🔍</p>
+        <p className="text-gray-800 font-semibold text-sm">No products found</p>
+        {searchQuery && (
+          <p className="text-gray-400 text-xs mt-1">Try a different search term</p>
+        )}
       </div>
     );
   }
