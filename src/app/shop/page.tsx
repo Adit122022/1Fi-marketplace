@@ -42,11 +42,11 @@ export default function ShopPage() {
 
       {/* Tabs Container (Overlapping banner) */}
       <div className="px-4 -mt-10 relative z-20">
-        <div className="bg-[#f8f6fc] rounded-[2rem] p-1.5 flex shadow-sm border border-gray-100">
+        <div className="bg-[#f8f6fc] rounded-[2rem] p-1.5 flex overflow-x-auto hide-scrollbar shadow-sm border border-gray-100">
           <button
             onClick={() => setActiveTab("brands")}
             className={cn(
-              "flex-1 py-3.5 text-[13px] font-bold rounded-[1.5rem] transition-all relative",
+              "flex-1 whitespace-nowrap px-6 py-3.5 text-[13px] font-bold rounded-[1.5rem] transition-all relative",
               activeTab === "brands"
                 ? "bg-white text-[#4c1d95] shadow-sm"
                 : "text-gray-600 hover:text-gray-800"
@@ -60,7 +60,7 @@ export default function ShopPage() {
           <button
             onClick={() => setActiveTab("stores")}
             className={cn(
-              "flex-1 py-3.5 text-[13px] font-bold rounded-[1.5rem] transition-all relative",
+              "flex-1 whitespace-nowrap px-6 py-3.5 text-[13px] font-bold rounded-[1.5rem] transition-all relative",
               activeTab === "stores"
                 ? "bg-white text-[#4c1d95] shadow-sm"
                 : "text-gray-600 hover:text-gray-800"
@@ -74,7 +74,7 @@ export default function ShopPage() {
           <button
             onClick={() => setActiveTab("marketplace")}
             className={cn(
-              "flex-1 py-3.5 text-[13px] font-bold rounded-[1.5rem] transition-all relative",
+              "flex-1 whitespace-nowrap px-6 py-3.5 text-[13px] font-bold rounded-[1.5rem] transition-all relative",
               activeTab === "marketplace"
                 ? "bg-white text-[#4c1d95] shadow-sm"
                 : "text-gray-600 hover:text-gray-800"

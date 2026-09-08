@@ -31,7 +31,7 @@ export function ProductList() {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
         {[1, 2, 3, 4].map((n) => (
-          <Card key={n} className="overflow-hidden">
+          <Card key={n} className="overflow-hidden ">
             <Skeleton className="h-48 w-full" />
             <CardHeader className="p-4">
               <Skeleton className="h-4 w-2/3 mb-2" />
@@ -49,20 +49,20 @@ export function ProductList() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
       {products.map((product) => {
-        const startingEMI = product.emiOptions.length > 0 
+        const startingEMI = product.emiOptions.length > 0
           ? Math.min(...product.emiOptions.map(opt => opt.monthlyEMI))
           : null;
 
         return (
           <Link key={product.id} href={`/shop/product/${product.id}`} className="group">
-            <Card className="h-full overflow-hidden transition-all hover:shadow-md flex flex-col rounded-[1.25rem] border-none shadow-sm bg-white">
-              <div className="relative h-40 w-full bg-[#f8f6fc] p-4 flex items-center justify-center m-2 rounded-xl mb-0">
+            <Card className="h-full overflow-hidden transition-all hover:shadow-lg flex flex-col rounded-xl border border-gray-200 shadow-sm bg-white">
+              <div className="relative h-48 w-full bg-white p-4 flex items-center justify-center border-b border-gray-100">
                 {product.isNew && (
-                  <Badge className="absolute top-2 left-2 z-10 bg-white text-[#4c1d95] shadow-sm font-bold text-[10px] uppercase border-none" variant="secondary">
-                    New
+                  <Badge className="absolute top-2 left-2 z-10 bg-red-600 text-white shadow-sm font-bold text-[10px] uppercase border-none hover:bg-red-700" variant="secondary">
+                    Best Seller
                   </Badge>
                 )}
-                <div className="relative w-[85%] h-[85%]">
+                <div className="relative w-full h-full">
                   <Image
                     src={product.images[0]}
                     alt={product.name}
@@ -73,17 +73,28 @@ export function ProductList() {
                 </div>
               </div>
               <CardHeader className="p-4 pb-2 flex-grow">
-                <p className="text-[11px] text-gray-500 font-bold uppercase tracking-wider mb-1">{product.brand}</p>
-                <CardTitle className="text-[15px] leading-snug line-clamp-2 text-gray-900">{product.name}</CardTitle>
+                <CardTitle className="text-base font-medium leading-snug line-clamp-2 text-[#0F1111] group-hover:text-blue-600 transition-colors">
+                  {product.name}
+                </CardTitle>
+                <p className="text-xs text-[#007185] mt-1">{product.brand}</p>
+                {/* Mock rating */}
+                <div className="flex items-center mt-1 gap-1">
+                  <div className="flex text-yellow-400 text-xs">
+                    ★★★★<span className="text-gray-300">★</span>
+                  </div>
+                  <span className="text-xs text-blue-600">(1,234)</span>
+                </div>
               </CardHeader>
               <CardContent className="p-4 pt-0 flex flex-col gap-1.5">
-                <div className="font-extrabold text-lg text-gray-900 tracking-tight">
-                  ₹{product.basePrice.toLocaleString("en-IN")}
+                <div className="flex items-baseline gap-1">
+                  <span className="text-xs text-gray-900 font-medium">₹</span>
+                  <span className="font-bold text-2xl text-gray-900 tracking-tight">
+                    {product.basePrice.toLocaleString("en-IN")}
+                  </span>
                 </div>
                 {startingEMI && (
-                  <div className="inline-flex items-center gap-1.5 bg-green-50 text-green-700 px-2 py-1 rounded-md w-fit">
-                    <span className="text-[10px] font-bold">STARTING EMI</span>
-                    <span className="text-xs font-extrabold">₹{startingEMI.toLocaleString("en-IN")}/mo</span>
+                  <div className="text-xs text-gray-600 mt-1">
+                    EMI starts at <span className="font-semibold text-gray-900">₹{startingEMI.toLocaleString("en-IN")}</span>. No Cost EMI available.
                   </div>
                 )}
               </CardContent>
